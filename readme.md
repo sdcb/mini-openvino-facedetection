@@ -12,4 +12,3 @@ This is the model that this demo uses: [face-detection-0200](https://docs.openvi
 * Sdcb.OpenVINO.runtime.win-x64
 * OpenCvSharp4
 * OpenCvSharp4.runtime.win
-* 
