@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 
 string modelFile = DownloadModel().GetAwaiter().GetResult();
 
-using Model m = SharedOVCore.Instance.ReadModel(modelFile);
-using CompiledModel cm = SharedOVCore.Instance.CompileModel(m, "CPU");
+using Model m = OVCore.Shared.ReadModel(modelFile);
+using CompiledModel cm = OVCore.Shared.CompileModel(m, "CPU");
 using InferRequest ir = cm.CreateInferRequest();
 
 NCHW modelInputSize = m.Inputs.Primary.Shape.ToNCHW();
