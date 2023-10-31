@@ -1,5 +1,6 @@
 ﻿using OpenCvSharp;
 using Sdcb.OpenVINO;
+using Sdcb.OpenVINO.Extensions.OpenCvSharp4;
 using Sdcb.OpenVINO.Natives;
 using System.Diagnostics;
 
@@ -31,10 +32,7 @@ public class Program
             using Mat frame = vc.RetrieveMat();
             Stopwatch sw = Stopwatch.StartNew();
 
-            using (Tensor tensor = Tensor.FromRaw(
-                new ReadOnlySpan<byte>((void*)frame.Data, (int)(frame.DataEnd - frame.DataStart)),
-                new Shape(1, frame.Rows, frame.Cols, 3),
-                ov_element_type_e.U8))
+            using (Tensor tensor = frame.AsTensor())
             {
                 ir.Inputs.Primary = tensor;
             }
